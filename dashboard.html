@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome, {{ session['name'] }}!</h2>
+<p>Choose a course and start learning.</p>
+<div class="grid">
+{% for c in courses %}
+  <div class="card">
+    <h3>{{ c['title'] }}</h3>
+    <p>{{ c['description'] }}</p>
+    <p><b>Duration:</b> {{ c['duration'] }}</p>
+    {% if c['completed'] %}
+      <p class="success">Completed — Score: {{ c['score'] }}%</p>
+      <a class="button" href="{{ url_for('certificate', course_id=c['id']) }}">Download Certificate</a>
+    {% elif c['completed'] is not none %}
+      <form method="post" action="{{ url_for('complete', course_id=c['id']) }}">
+        <input type="hidden" name="score" value="85">
+        <button type="submit">Mark Course Complete</button>
+      </form>
+    {% else %}
+      <form method="post" action="{{ url_for('enroll', course_id=c['id']) }}">
+        <button type="submit">Enroll Now</button>
+      </form>
+    {% endif %}
+  </div>
+{% endfor %}
+</div>
+{% endblock %}
