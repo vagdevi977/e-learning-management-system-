@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Lessons</title>
+
+</head>
+
+<body>
+
+    <h1>Course Lessons</h1>
+
+    {% for lesson in lessons %}
+
+        <hr>
+
+        <h2>{{ lesson[2] }}</h2>
+
+        <a href="/lesson/{{ lesson[0] }}">
+            Open Lesson
+        </a>
+
+    {% endfor %}
+
+    <br><br>
+
+    <a href="/dashboard">
+        Back to Dashboard
+    </a>
+
+</body>
+
+</html>
