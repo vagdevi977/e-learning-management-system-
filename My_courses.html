@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Courses</title>
+
+</head>
+
+<body>
+
+    <h1>My Courses</h1>
+
+    {% if course_data %}
+
+        {% for item in course_data %}
+
+            {% set course = item[0] %}
+            {% set total = item[1] %}
+            {% set completed = item[2] %}
+            {% set percentage = item[3] %}
+
+            <hr>
+
+            <h2>{{ course[1] }}</h2>
+
+            <p>
+                {{ course[2] }}
+            </p>
+
+            <p>
+                Duration: {{ course[3] }}
+            </p>
+
+            <h3>
+                Progress: {{ percentage }}%
+            </h3>
+
+            <p>
+                {{ completed }} of
+                {{ total }}
+                lessons completed
+            </p>
+
+            <a href="/lessons/{{ course[0] }}">
+                Continue Learning
+            </a>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>
+            You have not enrolled in any course yet.
+        </p>
+
+        <a href="/courses">
+            Browse Courses
+        </a>
+
+    {% endif %}
+
+    <br><br>
+
+    <a href="/dashboard">
+        Dashboard
+    </a>
+
+</body>
+
+</html>
