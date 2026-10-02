@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Courses</title>
+
+</head>
+
+<body>
+
+    <h1>Available Courses</h1>
+
+    {% for course in courses %}
+
+        <hr>
+
+        <h2>{{ course[1] }}</h2>
+
+        <p>
+            {{ course[2] }}
+        </p>
+
+        <p>
+            Duration: {{ course[3] }}
+        </p>
+
+        <a href="/course/{{ course[0] }}">
+            View Course
+        </a>
+
+        <br>
+
+    {% endfor %}
+
+    <br>
+
+    <a href="/dashboard">
+        Back to Dashboard
+    </a>
+
+</body>
+
+</html>
