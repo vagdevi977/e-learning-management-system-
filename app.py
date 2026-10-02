@@ -105,7 +105,11 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for("home"))
-
+@app.route("/quiz")
+def quiz():
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+    return render_template("quiz.html")
 @app.route("/dashboard")
 def dashboard():
     if "user_id" not in session:
