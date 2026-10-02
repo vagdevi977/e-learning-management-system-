@@ -1,4 +1,0 @@
-Flask
-Werkzeug
-reportlab
-gunicorn 
